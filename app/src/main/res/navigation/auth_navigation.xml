@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_login">
+
+    <fragment
+        android:id="@+id/navigation_login"
+        android:name="com.desire.figmadatabaseapi.main.login.LoginFragment"
+        android:label="@string/log_in"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_navigation_login_to_navigation_register"
+            app:destination="@id/navigation_register" />
+        <action
+            android:id="@+id/action_navigation_login_to_navigation_forgot_pass"
+            app:destination="@id/navigation_forgot_pass" />
+        <action
+            android:id="@+id/action_navigation_login_to_navigation_terms"
+            app:destination="@id/navigation_terms" />
+    </fragment>
+
+   <fragment
+        android:id="@+id/navigation_register"
+        android:name="com.desire.figmadatabaseapi.main.register.RegisterFragment"
+        android:label="@string/register"
+        tools:layout="@layout/fragment_register" />
+
+    <fragment
+        android:id="@+id/navigation_forgot_pass"
+        android:name="com.desire.figmadatabaseapi.main.pass.ForgotPassFragment"
+        android:label="@string/forgot_password"
+        tools:layout="@layout/fragment_forgot_pass" />
+
+    <fragment
+        android:id="@+id/navigation_terms"
+        android:name="com.desire.figmadatabaseapi.main.TermsFragment"
+        android:label="@string/terms_policy"
+        tools:layout="@layout/fragment_terms" />
+
+</navigation>
