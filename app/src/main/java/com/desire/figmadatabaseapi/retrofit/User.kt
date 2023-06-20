@@ -1,6 +1,8 @@
-package com.desire.figmadatabaseapi.home
+package com.desire.figmadatabaseapi.retrofit
 
-data class RcvModel(
+import android.media.Image
+
+data class User(
 
     val category: String,
     val description: String,
@@ -8,6 +10,4 @@ data class RcvModel(
     val image: String,
     val price: Double,
     val title: String
-
-
-    )
+)

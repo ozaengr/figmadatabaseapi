@@ -67,7 +67,6 @@ class LoginFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-
                 loginViewModel.getUser(
                     binding.textInputEmail.text.toString(),
                     binding.textInputPassword.text.toString()
@@ -79,11 +78,15 @@ class LoginFragment : Fragment() {
                             android.content.Intent(requireContext(), HomePageActivity::class.java)
                         startActivity(intent)
                     } else {
-                        Toast.makeText(requireContext(), "User Not Found", Toast.LENGTH_SHORT)
-                            .show()
+                        Toast.makeText(requireContext(),
+                            "User not found", Toast.LENGTH_LONG).show()
+
                     }
                 }
+
+
             }
+
         }
     }
 

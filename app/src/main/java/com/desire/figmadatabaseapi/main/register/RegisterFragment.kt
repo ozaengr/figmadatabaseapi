@@ -7,7 +7,6 @@ import android.text.TextUtils
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.util.Patterns
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.desire.figmadatabaseapi.database.EntityData
+import com.desire.figmadatabaseapi.database.UserLoginTable
 import com.desire.figmadatabaseapi.databinding.FragmentRegisterBinding
 import com.desire.figmadatabaseapi.main.base.BaseFragment
 
@@ -77,13 +76,18 @@ class RegisterFragment : BaseFragment() {
                     Toast.LENGTH_SHORT
                 ).show()
 
-                val entityData = EntityData()
+              /*  val entityData = EntityData()
                 entityData.name = binding.textInputName.text.toString()
                 entityData.emailId = binding.textInputEmail.text.toString()
                 entityData.password = binding.textInputPassword.text.toString()
+              */
+                var userLoginTable = UserLoginTable()
 
-                registerViewModel.addUser(entityData)
+                userLoginTable.name = binding.textInputName.text.toString()
+                userLoginTable.emailId = binding.textInputEmail.text.toString()
+                userLoginTable.password = binding.textInputPassword.text.toString()
 
+                registerViewModel.addUser(userLoginTable)
 
                 findNavController().navigateUp()
             }

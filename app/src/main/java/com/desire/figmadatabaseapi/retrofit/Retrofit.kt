@@ -16,8 +16,7 @@ object Retrofit {
     }
 
     val client =
-        OkHttpClient().newBuilder().connectTimeout(20, TimeUnit.SECONDS)
-            .addInterceptor(interceptor)
+        OkHttpClient().newBuilder().connectTimeout(20, TimeUnit.SECONDS).addInterceptor(interceptor)
             .writeTimeout(20, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .build()
@@ -29,6 +28,6 @@ object Retrofit {
         .build()
 
 
-    val api = retrofit.create(Api::class.java)
+    val apiInterface = retrofit.create(Api::class.java)
 
 }
