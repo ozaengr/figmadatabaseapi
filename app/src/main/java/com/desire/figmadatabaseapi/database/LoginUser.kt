@@ -7,12 +7,11 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 @Entity(tableName = "user_login_table")
-data class UserLoginTable(
+data class LoginUser(
 
     @PrimaryKey(autoGenerate = true)
-    var id : Int = 0,
+    var  id : Int = 0,
     var name : String = "",
     var emailId : String = "",
     var password : String = "",
-
 ): Parcelable

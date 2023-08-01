@@ -14,7 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.desire.figmadatabaseapi.database.UserLoginTable
+import com.desire.figmadatabaseapi.database.LoginUser
 import com.desire.figmadatabaseapi.databinding.FragmentRegisterBinding
 import com.desire.figmadatabaseapi.main.base.BaseFragment
 
@@ -81,13 +81,14 @@ class RegisterFragment : BaseFragment() {
                 entityData.emailId = binding.textInputEmail.text.toString()
                 entityData.password = binding.textInputPassword.text.toString()
               */
-                var userLoginTable = UserLoginTable()
 
-                userLoginTable.name = binding.textInputName.text.toString()
-                userLoginTable.emailId = binding.textInputEmail.text.toString()
-                userLoginTable.password = binding.textInputPassword.text.toString()
+                val loginUser = LoginUser()
 
-                registerViewModel.addUser(userLoginTable)
+                loginUser.name = binding.textInputName.text.toString()
+                loginUser.emailId = binding.textInputEmail.text.toString()
+                loginUser.password = binding.textInputPassword.text.toString()
+
+                registerViewModel.addUser(loginUser)
 
                 findNavController().navigateUp()
             }

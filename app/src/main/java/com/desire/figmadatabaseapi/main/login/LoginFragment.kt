@@ -15,8 +15,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.desire.figmadatabaseapi.R
+import com.desire.figmadatabaseapi.database.LoginUser
 import com.desire.figmadatabaseapi.databinding.FragmentLoginBinding
 import com.desire.figmadatabaseapi.home.HomePageActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import okhttp3.internal.notify
 
 
 class LoginFragment : Fragment() {
@@ -24,11 +28,6 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var loginViewModel: LoginViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +44,25 @@ class LoginFragment : Fragment() {
         openSignupButton()
         onClickTerms()
         onClickForgotPass()
+        onClickAllUsers()
+    }
+
+    private fun onClickAllUsers() {
+        binding.tvAllUserData.setOnClickListener {
+            findNavController().navigate(LoginFragmentDirections.actionNavigationLoginToNavigationAllUserData())
+            //findNavController().navigate(LoginFragmentDirections.actionNavigationLoginToSeekdemo())
+
+
+            //Toast.makeText(requireContext(),"Success",Toast.LENGTH_SHORT).show()
+
+          /*  MaterialAlertDialogBuilder(requireContext())
+                .setMessage(resources.getString(R.string.long_message))
+                .setPositiveButton(resources.getString(R.string.accept)) { dialog, which ->
+                    // Respond to positive button press
+                }
+                .show()*/
+
+        }
     }
 
     private fun initView() {
@@ -67,7 +85,8 @@ class LoginFragment : Fragment() {
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-                loginViewModel.getUser(
+
+                loginViewModel.getData(
                     binding.textInputEmail.text.toString(),
                     binding.textInputPassword.text.toString()
                 ).observe(viewLifecycleOwner) {
@@ -78,15 +97,12 @@ class LoginFragment : Fragment() {
                             android.content.Intent(requireContext(), HomePageActivity::class.java)
                         startActivity(intent)
                     } else {
-                        Toast.makeText(requireContext(),
-                            "User not found", Toast.LENGTH_LONG).show()
-
+                        Toast.makeText(requireContext(), "User Not Found", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
 
-
             }
-
         }
     }
 
@@ -112,7 +128,7 @@ class LoginFragment : Fragment() {
     private fun onClickTerms() {
         val titleIntro = "By logging, you are agreeing with our Terms of Use and Privacy Policy"
         val spannableString: SpannableString = SpannableString(titleIntro)
-        val clickableSpan: ClickableSpan = object : ClickableSpan() {
+        val clickableSpan1: ClickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
                 binding.tvTerms.setOnClickListener {
                     findNavController().navigate(LoginFragmentDirections.actionNavigationLoginToNavigationTerms())
@@ -127,7 +143,7 @@ class LoginFragment : Fragment() {
                 )
             }
         }
-        spannableString.setSpan(clickableSpan, 38, 50, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        spannableString.setSpan(clickableSpan1, 38, 50, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         spannableString.setSpan(clickableSpan2, 55, 69, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
         binding.tvTerms.text = spannableString
